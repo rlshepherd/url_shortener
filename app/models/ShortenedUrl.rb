@@ -1,26 +1,32 @@
 require 'alphadecimal'
+require 'url_regex'
 
 class ShortenedUrl < ActiveRecord::Base
- validates_presence_of :url
- validates_uniqueness_of :url
+  validates_presence_of :url
+  validates_uniqueness_of :url
 
- # we also want to validate the url
- # 
- # this blog compares performance of difference solutions against urls:
- # https://mathiasbynens.be/demo/url-regex
- #
- # the best performing statement is 502 (!) characters long
- #
- # here is a link to the gist where these are discussed:
- # https://gist.github.com/dperini/729294
+  # we also want to validate the url with regex, which is non-trivial.
+  # 
+  # this blog compares performance of difference solutions against urls:
+  # https://mathiasbynens.be/demo/url-regex
+  #
+  # the best performing statement is 502 (!) characters long
+  #
+  # here is a link to the gist where these are discussed:
+  # https://gist.github.com/dperini/729294
+  #
+  # here, it's easier to use the url_regex gem
+  #
+  # we have to require the schema (e.g. "http://") or redirect will fail.
 
- validates_format_of :url, :with => /\A(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?\z/i
+  validates_format_of :url, :with => UrlRegex.get(mode: :validation)
 
- def shorten
+  def shorten
+ 	# using base 64 keeps the shortened urls shorter even as the number of unique urls grows.
  	self.id.alphadecimal
- end
+  end
 
- def find_by_shortened(shortened)
- 	find(shortened.alphadecimal)
- end
+  def self.find_by_shortened(shortened)
+    find(shortened.alphadecimal)
+  end
 end

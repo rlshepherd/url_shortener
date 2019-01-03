@@ -3,6 +3,8 @@ require 'sinatra/activerecord'
 require './config/environment.rb'
 
 class ApplicationController < Sinatra::Base
+  
+  set :show_exceptions => false
 
   configure do
     set :views, 'app/views'
@@ -22,7 +24,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/:shortened' do
-    shortened_url = ShortenedUrl.find_by_shortened(params[:shortened])
-    redirect shortened_url.url
+    @shortened_url = ShortenedUrl.find_by_shortened(params[:shortened])
+    redirect @shortened_url.url
+  end
+
+  error ActiveRecord::RecordNotFound do
+    redirect '/'
   end
 end

@@ -6,6 +6,8 @@ gem 'sinatra-activerecord'
 gem 'thin'
 gem 'require_all'
 gem 'alphadecimal'
+gem 'url_regex'
+gem 'rspec'
 
 group :development do
   gem 'shotgun'
