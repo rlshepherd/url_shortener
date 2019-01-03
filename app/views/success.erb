@@ -1,0 +1,9 @@
+<h3>Your Shortened URL:</h3>
+<br />
+<%= "http://#{request.host_with_port}/#{@shortened_url.id}" %>
+<br />
+<h3>Enter a another URL:</h3>
+<form method="post" action="/">
+  <input type="text" name="url" placeholder="url:">
+  <input class="btn btn-primary" type="submit" value="Shortify">
+</form>

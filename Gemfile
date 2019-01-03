@@ -5,6 +5,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'thin'
 gem 'require_all'
+gem 'alphadecimal'
 
 group :development do
   gem 'shotgun'

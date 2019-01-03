@@ -1,0 +1,10 @@
+<% if @shortened_url.present? && !@shortened_url.valid? %>
+<p class="invalid-url-error">
+<%= "Invalid URL: #{@shortened_url.url}" %>
+</p>
+<% end %>
+<h3>Enter a url:</h3>
+<form method="post" action="/">
+  <input type="text" name="url" placeholder="url:">
+  <input class="btn btn-primary" type="submit" value="Shortify">
+</form>

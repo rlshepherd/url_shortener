@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+  <style>
+      .todo {
+        font-family: 'Roboto', bold;
+        right: -5px;
+        top: -20px;
+      }
+    </style>
+  <title>Shortify</title> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+ <nav class="navbar navbar-default navbar-static-top" style="background: #F1F1F1">
+  <div class="container">
+   <h1 class="todo">Shortify!</h1>
+   <h2 class="todo"><u><strong>URL</strong></u> stands for "<u><strong>U</strong></u>RLs are <u><strong>R</strong></u>eally <u><strong>L</strong></u>ong", so make them <i>shorter!</i></h2> 
+  </nav>
+</div>
+</div>
+<nav>
+  <div class="container">
+    <% if !@error_message.nil? %>
+    <div class="alert alert-warning">
+      <%= @error_message %>
+    </div>
+  <% end %>
+    <%= yield %>
+
+  </div>
+</nav>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+</body>
+</html>
