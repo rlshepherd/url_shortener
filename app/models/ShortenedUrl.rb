@@ -18,4 +18,9 @@ class ShortenedUrl < ActiveRecord::Base
 
  def shorten
  	self.id.alphadecimal
+ end
+
+ def find_by_shortened(shortened)
+ 	find(shortened.alphadecimal)
+ end
 end

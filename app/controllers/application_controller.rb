@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/:shortened' do
-    shortened_url = ShortenedUrl.find(params[:shortened])
+    shortened_url = ShortenedUrl.find_by_shortened(params[:shortened])
     redirect shortened_url.url
   end
 end
