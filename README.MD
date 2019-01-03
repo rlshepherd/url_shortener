@@ -4,6 +4,8 @@
 
 This is a simple URL shortener service built using Ruby and sinatra. 
 
+**[View the live demo here](https://fast-lake-48744.herokuapp.com/)**
+
 ## Installation and running locally
 
 1. Make sure you have the prequisites (see Prerequisites below).
@@ -84,7 +86,7 @@ On the command line, run the equivalent of this command to push your local herok
 
 It is probably this: `git push heroku heroku:master`
 
-Run your migrations `heroku run db:migrate` (`db:setup` will not work because heroku doesn't give you db creation permissions directly.)
+Run your migrations `heroku run rake db:migrate` (`rake db:setup` will not work because heroku doesn't give you db creation permissions directly.)
 
 Navigate to your app.
 
