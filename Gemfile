@@ -8,6 +8,7 @@ gem 'require_all'
 gem 'alphadecimal'
 gem 'url_regex'
 gem 'rspec'
+gem 'bundler'
 
 group :development do
   gem 'shotgun'
