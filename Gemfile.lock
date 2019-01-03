@@ -34,6 +34,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rake (12.3.2)
     require_all (2.0.0)
     ripl (0.7.1)
       bond (~> 0.5.1)
@@ -90,6 +91,7 @@ DEPENDENCIES
   bundler
   mysql2
   pry
+  rake
   require_all
   rspec
   shotgun
