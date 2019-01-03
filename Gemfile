@@ -16,3 +16,7 @@ group :development do
   gem 'tux'
   gem 'mysql2' # sqlite3 won't install on my mac for xcode related reasons!
 end
+
+group :test do
+  gem rake
+end
