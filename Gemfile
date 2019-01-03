@@ -10,6 +10,7 @@ gem 'url_regex'
 gem 'rspec'
 gem 'bundler'
 gem 'rake'
+gem 'codecov', :require => false, :group => :test
 
 group :development do
   gem 'shotgun'
