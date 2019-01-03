@@ -1,6 +1,6 @@
 # URL Shortener
 
-[![Build Status](https://travis-ci.com/rlshepherd/url_shortener.svg?branch=master)](https://travis-ci.com/rlshepherd/url_shortener)
+[![Build Status](https://travis-ci.com/rlshepherd/url_shortener.svg?branch=master)](https://travis-ci.com/rlshepherd/url_shortener) [![codecov](https://codecov.io/gh/rlshepherd/url_shortener/branch/master/graph/badge.svg)](https://codecov.io/gh/rlshepherd/url_shortener)
 
 This is a simple URL shortener service built using Ruby and sinatra. 
 
