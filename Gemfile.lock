@@ -87,6 +87,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   alphadecimal
+  bundler
   mysql2
   pry
   require_all
