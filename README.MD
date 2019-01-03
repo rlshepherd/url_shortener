@@ -4,7 +4,7 @@
 
 This is a simple URL shortener service built using Ruby and sinatra. 
 
-## Installing
+## Installation and running locally
 
 1. Make sure you have the prequisites (see Prerequisites below).
 2. Clone this repository.
@@ -40,8 +40,54 @@ development:
   password: yourpassword
 ```
 
-This project only includes the `mysql2` gem in the Gemfile. If you want to use another database (such as sqlite or postgres), you will need make sure you have the corresponding gem installed.
+This project only includes the `mysql2` and `pg` gems in the Gemfile. If you want to use another database (such as sqlite), you will need make sure you have the corresponding gem installed.
 
 Importantly, the database server must be running before you execute `rake db:setup`.
+
+## Heroku Deployment
+
+**On the command line:**
+
+Run `checkout -b heroku` to create a new branch for deployment.
+
+Add a `config/database.yml`:
+
+```yml
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+```
+
+Add and commit to git.
+
+Run `heroku create` to create the heroku app (requires heroku CLI).
+
+**On Heroku**
+
+Navigate to your apps dashboard.
+
+Under resources, add a postgres database.
+
+Under settings, add the various DATABASE environment variables needed in the database.yml. You can see the values in the `DATABASE_URL` environment variable.
+
+Add a `SINATRA_ENV` environment variables with a value of `production`
+
+**Deploy**
+
+On the command line, run the equivalent of this command to push your local heroku branch to the heroku remote master brance:
+`git push <remote> <local branch name>:<remote branch to push into>`
+
+It is probably this: `git push heroku heroku:master`
+
+Run your migrations `heroku run db:migrate` (`db:setup` will not work because heroku doesn't give you db creation permissions directly.)
+
+Navigate to your app.
+
+
 
 
