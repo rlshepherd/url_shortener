@@ -11,6 +11,7 @@ gem 'rspec'
 gem 'bundler'
 gem 'rake'
 gem 'codecov', :require => false, :group => :test
+gem 'pg'
 
 group :development do
   gem 'shotgun'

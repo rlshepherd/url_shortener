@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+
+development: 
+  <<: *default
+  database: url_shortener_development
+  host: localhost 
+  username: root
+  password: development
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
