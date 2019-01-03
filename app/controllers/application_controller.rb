@@ -4,7 +4,7 @@ require './config/environment.rb'
 
 class ApplicationController < Sinatra::Base
   
-  set :show_exceptions => false
+  #set :show_exceptions => false
 
   configure do
     set :views, 'app/views'
